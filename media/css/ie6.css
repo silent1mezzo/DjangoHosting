@@ -1,0 +1,20 @@
+
+
+/*IE6*/
+* html .body_area {
+	margin:28px 0 0 0;
+}
+* html .primarycontainer {
+	padding:15px 15px 0 15px;
+}
+* html #sliding {
+	background:#516d8c;
+}
+* html .bloglist ul li {
+	padding:0 0 10px 0;
+}
+
+/*IE7*/
+*:first-child+html .bloglist ul li {
+	padding:0 0 10px 0;
+}
