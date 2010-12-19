@@ -205,10 +205,9 @@
 	float:right;
 	width:550px;
 	position:relative;
-	border-bottom:1px solid #e8e8e8;
 }
 .ourwebsite ul {
-	position:absolute;
+	position:relative;
 	top:0;
 	right:0;
 }
@@ -624,17 +623,20 @@
 
 /*READMORE*/
 a.readmore:link, a.readmore:visited {
+    display:block;
 	text-decoration:none;
 	color:#FFF;
 	background:#214679;
-	float:right;
-	font-size:10px;
+    height: 20px;
+    width: 100px;
 	text-align:center;
 	padding:0 8px 0 8px;
+    margin: 5px 0;
 	text-transform:uppercase;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
 }
 a.readmore:hover {
-	font-size:10px;
 	background:#3f6497;
 	text-decoration:none;
 	color:#FFF;
@@ -658,4 +660,8 @@ a.readmore:hover {
 	padding-left:1em;
 	text-indent:-1em;
 }
- 
+
+.host {
+    margin: 5px 0 5px 0;
+    border-bottom: 1px solid #E8E8E8;
+} 

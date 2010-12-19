@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block includes %}<link href="{{ MEDIA_URL }}css/header.css" rel="stylesheet" type="text/css" />{% endblock %}
+
+{% block slider %}{% endblock %}
+
+{% block content %}
+	<div class="ourwebsite clear">
+        <h2>{{ host.name }}</h2>
+        <p>{{ host.description }}</p>
+        <a href="{{ host.get_url }}" class='readmore'>Visit Website</a>        
+	</div>
+{% endblock %}

@@ -1,3 +1,4 @@
+@fonr-face { font-family: TitleAwesome; src: url('../fonts/Junction.ttf'); } @font-face { font-family: Delicious; font-weight: bold; src: url('Delicious-Bold.otf'); }
 .clear:after {
 	content: ".";
 	height:0;
@@ -16,16 +17,18 @@
 .logo {
 	width:236px;
 	float:left;
-	margin:38px 0 0 0;
+	margin:58px 0 0 0;
 }
 .logo a { 
 	display:block; 
 	text-decoration:none;
-	background:url(../img/logo.jpg) no-repeat;	
-	width:236px;
-	height:58px;
+	width:300px;
 	cursor:pointer;
 	margin:0;
+}
+
+.logo h1 {
+    font: 36px TitleAwesome, sans-serif;
 }
 
 /*Menus*/
@@ -228,3 +231,102 @@
 	text-decoration:underline;
 }
 
+.info {
+    background: #DDD;
+    border: 1px solid #CCC;
+    border: solid #CCC;
+    margin: 5px 0 25px 0;;
+    padding: 8px 14px 2px;
+    position: relative;
+    top: 8px;
+}   
+
+.errorlist {
+        position: relative;
+        float: none;
+        display: inline-block;
+        border: 1px solid;
+        padding: 5px;
+        background-position: 10px 11px !important;
+        background-repeat: no-repeat !important;
+        font-size: 13px;
+        background: #ffcece;
+        border-color: #df8f8f;
+        -webkit-border-radius: 3px; 
+        -moz-border-radius: 3px; 
+        border-radius: 3px;
+        color: #665252; 
+}
+
+.added {
+        position: relative;
+        float: none;
+        display: inline-block;
+        border: 1px solid;
+        padding: 5px;
+        background-position: 10px 11px !important;
+        background-repeat: no-repeat !important;
+        font-size: 13px;
+        background: #edfbd8;
+        border-color: #bfde84;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color: #665252;
+        margin-bottom:15px;
+}
+
+
+        *:focus{
+            outline:none; /* Prevents blue border in Webkit */
+        }
+ 
+        #top_bit {
+            width:760px;
+            margin: 0 auto;
+        }
+        
+        form {
+            width:300px;
+            margin: 20px auto;
+        }
+ 
+        p {
+            line-height: 1.6;
+        }
+ 
+        input, textarea, select {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color:#fff;
+            border:1px solid #ccc;
+            font-size:20px;
+            width:300px;
+            min-height:30px;
+            display:block;
+            margin-bottom:16px;
+            margin-top:8px;
+            
+            -webkit-border-radius:5px;
+            -moz-border-radius:5px;
+            border-radius:5px;
+            
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+        }
+        
+        textarea {
+                min-height:200px;
+        }
+ 
+        /* The interesting bit */
+        
+        input:not(:focus), textarea:not(:focus) {
+            opacity:0.5;
+        }
+        
+        input[type=submit] {
+            padding:10px;
+            background:none;
+            opacity:1.0;
+        }

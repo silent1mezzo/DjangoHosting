@@ -6,7 +6,7 @@
 			<link rel="alternate" type="application/rss+xml" title="RSS [Templates]" href="http://feeds2.feedburner.com/themecss" /> 
 			<link rel="shortcut icon" href="http://www.themecss.com/img/favicon.ico" /> 
  
-			<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script> 
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 			<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.easing.min.js"></script> 
 			{% if not featured %}
 				<link href="{{ MEDIA_URL }}css/header.css" rel="stylesheet" type="text/css" />
@@ -24,45 +24,42 @@
 	<div class="container clear"> 
 		{% block header %}
 		<div class="header clear"> 
-			<div class="logo"><a href="{% url index %}" title="Django Hosting Websites"></a></div> 
+			<div class="logo"><a href="{% url index %}" title="Django Hosting Websites"><h1>Django Hosting</h1></a></div> 
 			<div class="menu"> 
 				<ul class="lavaLampWithImage" id="menu_bg"> 
 					<li class="current"><a href="{% url index %}">Home</a></li> 
 					<li><a href="{% url about %}">About</a></li> 
-					<li><a href="{% url contact %}">Contact</a></li> 
-					<li><a href="#">Add a New Host</a></li>
+					<li><a href="{% url add %}" id='add-new'>Add a New Host</a></li>
 				</ul>		
 			</div> 
 		</div> 
 		{% endblock %}
-	
+
 		{% block slider %}
 		{% if featured %}
 		<div class="body_area clear"> 
 	    	<!-- BOUNCE SLIDE FROM TOP -->  
 	       	<div id="sliding"> 
-	           	{% for site in featured %} 
    	         		<div class="primarycontainer clear"> 
    	         			<div class="latest-works clear"> 
-             	       		<div class="largepic"><img src="{{ MEDIA_URL }}{{ site.large_image }}" alt="" title="" /></div> 
+             	       		<div class="largepic"><img src="{{ MEDIA_URL }}{{ featured.large_image }}" alt="" title="" /></div> 
              	       		<div class="smallpic"> 
              	        	    <ul> 
-             	                	<li><img src="{{ MEDIA_URL }}{{ site.small_image_one }}" alt="" title="" /></li> 
-             	               		<li class="bottom"><img src="{{ MEDIA_URL }}{{ site.small_image_two }}" alt="" title="" /></li> 
+             	                	<li><img src="{{ MEDIA_URL }}{{ featured.small_image_one }}" alt="" title="" /></li> 
+             	               		<li class="bottom"><img src="{{ MEDIA_URL }}{{ featured.small_image_two }}" alt="" title="" /></li> 
                 	       		</ul> 
                 	    	</div> 
                 		</div> 
                 		<div class="sidecontent"> 
-                    		<h2>{{ site.name }}</h2> 
-                    		<p>{{ site.description|slice:":400" }}...</p><a href='#'>Read More</a>
+                    		<h2>{{ featured.name }}</h2> 
+                    		<p>{{ featured.description|slice:":400" }}...</p><a href='#'>Read More</a>
                     		<div class="links clear"> 
                        			<ul> 
-                        	    	<li class="visit"><a href="{{ site.get_url }}">Visit Website</a></li> 
+                        	    	<li class="visit"><a href="{{ featured.get_url }}">Visit Website</a></li> 
                         		</ul> 
                     		</div>				
                 		</div> 
             		</div> 
-            	{% endfor %}
 			</div> <!-- sliding --> 
 		</div>  <!-- body_area -->
 		{% endif %}
@@ -76,33 +73,31 @@
 				<div class="featuredservices">
                     <h2>Recommended Hosts</h2>
                     <ul>
-                        {% for site in featured %}
+                        {% for site in featured_hosts %}
                             <li>
                                 <a class="title" href="{% url view_host site.slug %}">{{ site.name }}</a>
                                 <p>
                                     {{ site.description|slice:":255" }}...
                                 </p>
+                                <a href="{{ site.get_url }}" class="readmore">Visit Website</a>
                             </li>
                         {% endfor %}
                     </ul>
-                    <a href="{{ site.get_url }}" class="readmore">Visit Website</a>
                 </div>
 				{% block content %}
             	<div class="ourwebsite clear"> 
-            	    <h2> Welcome to our Website </h2> 
-               		<ul> 
-                		<li><a href="#"><img src="{{ MEDIA_URL }}img/email.png" alt="" title="" /></a></li> 
-                	    <li><a href="#"><img src="{{ MEDIA_URL }}img/facebook.png" alt="" title="" /></a></li> 
-                	    <li><a href="#"><img src="{{ MEDIA_URL }}img/twitter.png" alt="" title="" /></a></li> 
-                	</ul> 
-                	<div class="welcome"> 
-                	    <img src="{{ MEDIA_URL }}img/welcome-img.jpg" alt="" title="" /> 
-                	    <p> 
-                	        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaqueipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur autodit aut fugit, sed quia consequuntur magni dolores eos.
-                	  
-                	   		Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.
-                	   </p> 
-            		</div>                   
+                    {% for host in hosts %} 
+            	        {% ifchanged host.type %}<h2>{{ host.type }}</h2><div class='info'>{{ host.type.description }}</div>{% endifchanged %} 
+                        <div class='host'>
+                            <h3>{{ host.name }}</h3>
+                	        <div class="welcome"> 
+                	            <p> 
+                	                {{ host.description }} 
+                	            </p> 
+                                <a href="{{ host.get_url }}" class='readmore'>Visit Website</a>
+            		        </div>                   
+                        </div>
+                    {% endfor %}
             	</div> 
 				{% endblock %}
         	</div> <!-- middlecontent --> 
