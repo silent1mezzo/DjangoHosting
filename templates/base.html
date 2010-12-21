@@ -3,8 +3,6 @@
 	<head> 
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
 			<link href="{{ MEDIA_URL }}css/style.css" rel="stylesheet" type="text/css" /> 
-			<link rel="alternate" type="application/rss+xml" title="RSS [Templates]" href="http://feeds2.feedburner.com/themecss" /> 
-			<link rel="shortcut icon" href="http://www.themecss.com/img/favicon.ico" /> 
  
             <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 			<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.easing.min.js"></script> 
@@ -112,5 +110,17 @@
 		</div> 
 		{% endblock %}
 	</div> <!-- container -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-20123144-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
 	</body> 
 </html> 

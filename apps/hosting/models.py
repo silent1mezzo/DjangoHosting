@@ -13,7 +13,7 @@ class HostType(models.Model):
         return self.name
 
 def get_image_path(instance, filename):
-    return os.path.join('host_images', str(instance.name), filename)
+    return os.path.join('host_images', str(instance.slug), filename)
 
 class UsersManager(models.Manager):
     def random(self, featured=False):
